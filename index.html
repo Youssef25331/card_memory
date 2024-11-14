@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Card Memory Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fa fa-bars" id="sidebar-button"></i>
+    <i class="fa fa-times" id="sidebar-cancel"></i>
+  </label>
+  <div class="sidebar">
+
+    <h1>Set Difficulty</h1>
+    <ul>
+      <li><button class="button easy" type="button">Easy</button></li>
+      <li><button class="button medium" type="button">Medium</button></li>
+      <li><button class="button hard" type="button">Hard</button></li>
+    </ul>
+
+    <h1>Score: 0</h1>
+
+  </div>
+  <div class="main">
+    <h1 class="title">Card memory game</h1>
+    <div class="cards-container"></div>
+    <div class="win-status">
+      <h1 id="found-matches" >Found: 0</h1>
+      <h1 id="remaining-matches">Remaining: 0</h1>
+    </div>
+  </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
