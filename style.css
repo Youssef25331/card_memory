@@ -96,6 +96,7 @@ img:hover {
 #check:checked ~ label #sidebar-cancel {
   left: 196px;
   z-index: 1000;
+  position:fixed;
 }
 #sidebar-button,
 #sidebar-cancel {
