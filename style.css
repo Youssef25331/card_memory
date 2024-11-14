@@ -5,27 +5,21 @@
 html,
 body {
   background-image: url(./assets/background.png);
-  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100%;
-  overflow: hidden;
 }
 h1 {
   color: #897fdf;
 }
-.main {
+.game-container {
   background-color: rgb(11, 18, 37);
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  max-width: fit-content;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: fixed;
   padding: 10px;
   border-radius: 20px;
+  top:32px;
+  left:50%;
+  transform:translateX(-50%);
+  position:relative;
+  width:fit-content;
 }
 .title {
   text-align: center;
@@ -63,12 +57,13 @@ img:hover {
   cursor: pointer;
 }
 .win-status {
-  display: flex;
-  justify-content: space-between;
+  display:flex;
+  justify-content:space-around;
 }
 .sidebar {
   background-color: rgb(11, 18, 37);
   padding: 10px;
+  z-index:100;
   position: fixed;
   height: 100%;
   left: -276px;
@@ -100,6 +95,7 @@ img:hover {
 
 #check:checked ~ label #sidebar-cancel {
   left: 196px;
+  z-index: 1000;
 }
 #sidebar-button,
 #sidebar-cancel {
@@ -178,12 +174,6 @@ img:hover {
 .difficulty-button.active {
   background-color: #0c0b1b;
 }
-.easy {
-  background-color: hsl(224, 55%, 29%);
-}
-.medium {
-  background-color: hsl(224, 55%, 29%);
-}
-.hard {
+.difficulty-button {
   background-color: hsl(224, 55%, 29%);
 }
