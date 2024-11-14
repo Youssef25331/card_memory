@@ -5,7 +5,7 @@ let cardsNum = 6;
 let cards = [];
 let repeat = 2;
 let isGameActive = true;
-let clickedCards = []; // Array to track selected cards
+let clickedCards = []; 
 let matches = 0;
 
 function shuffleImages(images) {
@@ -38,7 +38,6 @@ function clearCards() {
 }
 
 function activateButton(index) {
-  console.log(index);
   for (let i = 0; i < 3; i++) {
     if (i === index) {
       diffcultyButtons[i].classList.add("active");
@@ -109,17 +108,28 @@ function makeRandomCards() {
 
   document.querySelector("#found-matches").innerHTML = `Found: ${matches}`;
   const shownImages = shuffleImages(images);
+
   shownImages.forEach((image) => {
-    let element = document.createElement("div");
-    element.classList.add("card");
-    element.classList.add("hidden");
-    element.innerHTML = `<img src="assets/${image}">`;
-    element.dataset.name = image.slice(0, -4);
-    element.dataset.id = (((1 + Math.random()) * 0x1000000) | 0)
+    let elementContainer = document.createElement("div");
+    elementContainer.classList.add("card-container");
+    elementContainer.classList.add("hidden");
+    elementContainer.dataset.name = image.slice(0, -4);
+    elementContainer.dataset.id = (((1 + Math.random()) * 0x1000000) | 0)
       .toString(16)
       .substring(1);
-    element.addEventListener("click", clickCard);
-    cards.push(element);
+    elementContainer.addEventListener("click", clickCard);
+
+    let backElement = document.createElement("div");
+    backElement.classList.add("card-back");
+    backElement.innerHTML = `<img src="assets/backImage.png">`;
+
+    let element = document.createElement("div");
+    element.classList.add("card");
+    element.innerHTML = `<img src="assets/${image}">`;
+
+    elementContainer.appendChild(element);
+    elementContainer.appendChild(backElement);
+    cards.push(elementContainer);
   });
 
   cards.forEach((card) => cardsContainer.appendChild(card));

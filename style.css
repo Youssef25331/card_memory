@@ -7,6 +7,7 @@ body {
   background-image: url(./assets/background.png);
   background-position: center;
   background-size: cover;
+  height: 100%;
 }
 h1 {
   color: #897fdf;
@@ -15,12 +16,13 @@ h1 {
   background-color: rgb(11, 18, 37);
   padding: 10px;
   border-radius: 20px;
-  top:32px;
-  left:50%;
-  transform:translateX(-50%);
-  position:relative;
-  width:fit-content;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: fit-content;
 }
+
 .title {
   text-align: center;
 }
@@ -37,33 +39,50 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+.card-container.hidden {
+  .card-back img {
+    transform: rotateY(0deg);
+  }
+  .card img {
+    transform: rotateY(180deg);
+  }
+}
+
+.card-back img {
+  transform: rotateY(180deg);
+}
+.card-container img {
+  width: 120px;
+  height: 120px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+.card-back {
+  position: relative;
+  margin: 2px;
+}
+
 .wide {
   grid-template-columns: repeat(6, auto);
-}
-.hidden img {
-  filter: opacity(0%);
 }
 .card {
   display: flex;
   height: 120px;
   margin: 2px;
-  background-color: #897fdf;
-}
-.cards-container img {
-  width: 120px;
-  height: auto;
+  position: absolute;
 }
 img:hover {
   cursor: pointer;
 }
 .win-status {
-  display:flex;
-  justify-content:space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .sidebar {
   background-color: rgb(11, 18, 37);
   padding: 10px;
-  z-index:100;
+  z-index: 100;
   position: fixed;
   height: 100%;
   left: -276px;
@@ -96,7 +115,7 @@ img:hover {
 #check:checked ~ label #sidebar-cancel {
   left: 196px;
   z-index: 1000;
-  position:fixed;
+  position: fixed;
 }
 #sidebar-button,
 #sidebar-cancel {
@@ -177,4 +196,27 @@ img:hover {
 }
 .difficulty-button {
   background-color: hsl(224, 55%, 29%);
+}
+
+/* some test stuff */
+.somecontainer {
+  position: absolute;
+}
+.somecontainer img {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+.somecontainer:hover {
+  .front img {
+    transform: rotateY(180deg);
+  }
+  .back img {
+    transform: rotateY(0deg);
+  }
+}
+.front {
+}
+.back img {
+  transform: rotateY(180deg);
 }
