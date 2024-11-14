@@ -43,7 +43,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-.wide{
+.wide {
   grid-template-columns: repeat(6, auto);
 }
 .hidden img {
@@ -62,8 +62,8 @@ h1 {
 img:hover {
   cursor: pointer;
 }
-.win-status{
-  display:flex;
+.win-status {
+  display: flex;
   justify-content: space-between;
 }
 .sidebar {
@@ -125,7 +125,7 @@ img:hover {
 
   transition: all 0.5s ease;
 }
-.button {
+.difficulty-button {
   align-items: center;
   background-clip: padding-box;
   background-color: #897fdf;
@@ -160,20 +160,23 @@ img:hover {
   width: 200px;
 }
 
-.button:hover,
-.button:focus {
+.difficulty-button:hover,
+.difficulty-button:focus {
   background-color: #2347d3;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
-.button:hover {
+.difficulty-button:hover {
   transform: translateY(-1px);
 }
 
-.button:active {
+.difficulty-button:active {
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
+}
+.difficulty-button.active {
+  background-color: #0c0b1b;
 }
 .easy {
   background-color: hsl(224, 55%, 29%);

@@ -1,4 +1,5 @@
 const cardsContainer = document.querySelector(".cards-container");
+const diffcultyButtons = document.querySelectorAll(".difficulty-button");
 
 let cardsNum = 6;
 let cards = [];
@@ -36,6 +37,16 @@ function clearCards() {
   isGameActive = true;
 }
 
+function activateButton(index) {
+  console.log(index);
+  for (let i = 0; i < 3; i++) {
+    if (i === index) {
+      diffcultyButtons[i].classList.add("active");
+      continue;
+    }
+    diffcultyButtons[i].classList.remove("active");
+  }
+}
 function clickCard() {
   if (isGameActive) {
     if (!clickedCards.length) {
@@ -80,7 +91,7 @@ function checkWin() {
 function makeRandomCards() {
   matches = 0;
   cardsContainer.innerHTML = "";
-  clearCards()
+  clearCards();
   cards = [];
   const images = [
     "eagle.jpg",
@@ -114,30 +125,32 @@ function makeRandomCards() {
   cards.forEach((card) => cardsContainer.appendChild(card));
 }
 
-document.querySelector(".easy").addEventListener("click", () => {
+diffcultyButtons[0].addEventListener("click", () => {
   repeat = 2;
   cardsNum = 6;
   if (cardsContainer.classList.contains("wide")) {
     cardsContainer.classList.remove("wide");
   }
+  activateButton(0);
   makeRandomCards();
 });
-document.querySelector(".medium").addEventListener("click", () => {
+diffcultyButtons[1].addEventListener("click", () => {
   repeat = 2;
   cardsNum = 8;
   if (cardsContainer.classList.contains("wide")) {
     cardsContainer.classList.remove("wide");
   }
+  activateButton(1);
   makeRandomCards();
 });
 
-document.querySelector(".hard").addEventListener("click", () => {
+diffcultyButtons[2].addEventListener("click", () => {
   repeat = 3;
   cardsNum = 8;
   if (!cardsContainer.classList.contains("wide")) {
     cardsContainer.classList.add("wide");
   }
-
+  activateButton(2);
   makeRandomCards();
 });
 
