@@ -1,11 +1,12 @@
 const cardsContainer = document.querySelector(".cards-container");
-const diffcultyButtons = document.querySelectorAll(".difficulty-button");
+const difficultyButtons = document.querySelectorAll(".difficulty-button");
+const clear = document.querySelector(".clear");
 
 let cardsNum = 6;
 let cards = [];
 let repeat = 2;
 let isGameActive = true;
-let clickedCards = []; 
+let clickedCards = [];
 let matches = 0;
 
 function shuffleImages(images) {
@@ -37,13 +38,13 @@ function clearCards() {
   isGameActive = true;
 }
 
-function activateButton(index) {
-  for (let i = 0; i < 3; i++) {
-    if (i === index) {
-      diffcultyButtons[i].classList.add("active");
-      continue;
+function activateButton(index1, index2) {
+  for (let i = 0; i < 6; i++) {
+    difficultyButtons[i].classList.remove("active");
+    if (i === index1 || index2) {
+      difficultyButtons[index1].classList.add("active");
+      difficultyButtons[index2].classList.add("active");
     }
-    diffcultyButtons[i].classList.remove("active");
   }
 }
 function clickCard() {
@@ -135,32 +136,43 @@ function makeRandomCards() {
   cards.forEach((card) => cardsContainer.appendChild(card));
 }
 
-diffcultyButtons[0].addEventListener("click", () => {
-  repeat = 2;
-  cardsNum = 6;
-  if (cardsContainer.classList.contains("wide")) {
-    cardsContainer.classList.remove("wide");
-  }
-  activateButton(0);
-  makeRandomCards();
-});
-diffcultyButtons[1].addEventListener("click", () => {
-  repeat = 2;
-  cardsNum = 8;
-  if (cardsContainer.classList.contains("wide")) {
-    cardsContainer.classList.remove("wide");
-  }
-  activateButton(1);
-  makeRandomCards();
+[difficultyButtons[0], difficultyButtons[3]].forEach((button) => {
+  button.addEventListener("click", () => {
+    repeat = 2;
+    cardsNum = 6;
+    if (cardsContainer.classList.contains("wide")) {
+      cardsContainer.classList.remove("wide");
+    }
+    activateButton(0, 3);
+    makeRandomCards();
+  });
 });
 
-diffcultyButtons[2].addEventListener("click", () => {
-  repeat = 3;
-  cardsNum = 8;
-  if (!cardsContainer.classList.contains("wide")) {
-    cardsContainer.classList.add("wide");
-  }
-  activateButton(2);
+[difficultyButtons[1], difficultyButtons[4]].forEach((button) => {
+  button.addEventListener("click", () => {
+    repeat = 2;
+    cardsNum = 8;
+    if (cardsContainer.classList.contains("wide")) {
+      cardsContainer.classList.remove("wide");
+    }
+    activateButton(1, 4);
+    makeRandomCards();
+  });
+});
+
+[difficultyButtons[2], difficultyButtons[5]].forEach((button) => {
+  button.addEventListener("click", () => {
+    repeat = 3;
+    cardsNum = 8;
+    if (!cardsContainer.classList.contains("wide")) {
+      cardsContainer.classList.add("wide");
+    }
+    activateButton(2, 5);
+    makeRandomCards();
+  });
+});
+
+clear.addEventListener("click", () => {
   makeRandomCards();
 });
 

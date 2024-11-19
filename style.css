@@ -15,12 +15,18 @@ h1 {
 .game-container {
   background-color: rgb(11, 18, 37);
   padding: 10px;
-  border-radius: 20px;
-  top: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: relative;
-  width: fit-content;
+  width: 100%;
+  min-width: fit-content;
+  min-height: 100%;
+  @media (min-width: 955px) {
+    border-radius: 20px;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    width: fit-content;
+    min-height: auto;
+  }
 }
 
 .title {
@@ -28,9 +34,6 @@ h1 {
 }
 
 .cards-container {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* flex-wrap: wrap;  */
   padding: 20px;
   background-color: rgb(11, 18, 37);
   display: grid;
@@ -65,6 +68,9 @@ h1 {
 
 .wide {
   grid-template-columns: repeat(6, auto);
+  @media (max-width: 955px) {
+    grid-template-columns: repeat(4, auto);
+  }
 }
 .card {
   display: flex;
@@ -79,6 +85,14 @@ img:hover {
   display: flex;
   justify-content: space-around;
 }
+.bottom-bar {
+  display: none;
+  margin-top: 16px;
+  @media (max-width: 955px) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
 .sidebar {
   background-color: rgb(11, 18, 37);
   padding: 10px;
@@ -87,6 +101,9 @@ img:hover {
   height: 100%;
   left: -276px;
   transition: all 0.5s ease;
+  @media (max-width: 955px) {
+    display: none;
+  }
 }
 .sidebar h1 {
   font-size: 28px;
@@ -110,18 +127,20 @@ img:hover {
 #check:checked ~ label #sidebar-button {
   opacity: 0;
   left: 240px;
+  z-index: 1000;
 }
 
 #check:checked ~ label #sidebar-cancel {
   left: 196px;
-  z-index: 1000;
   position: fixed;
+  z-index: 1000;
 }
 #sidebar-button,
 #sidebar-cancel {
   position: absolute;
   cursor: pointer;
   border-radius: 3px;
+  z-index: 1000;
 }
 #sidebar-button {
   background-color: #0b1225;
@@ -131,6 +150,9 @@ img:hover {
   color: white;
   padding: 6px 12px;
   transition: all 0.5s ease;
+  @media (max-width: 955px) {
+    display: none;
+  }
 }
 #sidebar-cancel {
   z-index: 10;
@@ -138,10 +160,13 @@ img:hover {
   top: 8px;
   color: white;
   font-size: 16px;
-
   transition: all 0.5s ease;
+
+  @media (max-width: 955px) {
+    display: none;
+  }
 }
-.difficulty-button {
+.custom-button {
   align-items: center;
   background-clip: padding-box;
   background-color: #897fdf;
@@ -175,48 +200,27 @@ img:hover {
   vertical-align: baseline;
   width: 200px;
 }
-
-.difficulty-button:hover,
-.difficulty-button:focus {
+.custom-button.clear {
+  width: 50px;
+}
+.custom-button:hover,
+.custom-button:focus {
   background-color: #2347d3;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
-.difficulty-button:hover {
+.custom-button:hover {
   transform: translateY(-1px);
 }
 
-.difficulty-button:active {
+.custom-button:active {
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
 }
-.difficulty-button.active {
+.custom-button.active {
   background-color: #0c0b1b;
 }
-.difficulty-button {
+.custom-button {
   background-color: hsl(224, 55%, 29%);
-}
-
-/* some test stuff */
-.somecontainer {
-  position: absolute;
-}
-.somecontainer img {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease;
-}
-.somecontainer:hover {
-  .front img {
-    transform: rotateY(180deg);
-  }
-  .back img {
-    transform: rotateY(0deg);
-  }
-}
-.front {
-}
-.back img {
-  transform: rotateY(180deg);
 }
