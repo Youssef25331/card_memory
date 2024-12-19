@@ -122,11 +122,11 @@ function makeRandomCards() {
 
     let backElement = document.createElement("div");
     backElement.classList.add("card-back");
-    backElement.innerHTML = `<img src="../assets/backImage.png">`;
+    backElement.innerHTML = `<img src="assets/backImage.png">`;
 
     let element = document.createElement("div");
     element.classList.add("card");
-    element.innerHTML = `<img src="../assets/${image}">`;
+    element.innerHTML = `<img src="assets/${image}">`;
 
     elementContainer.appendChild(element);
     elementContainer.appendChild(backElement);
