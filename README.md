@@ -13,7 +13,10 @@ Type the desired username and room name and you will be able to chat with the us
 
 # Resource
 
+Website: [Card-Memory](https://card-memory-gilt.vercel.app)
 Images: [Unsplash](https://unsplash.com)
+
+Hosting: [Vercel](https://vercel.com)
 
 # Preview
 ![Main](https://github.com/user-attachments/assets/298a3e20-dca5-4400-a1c4-9d3c7488be9b)
